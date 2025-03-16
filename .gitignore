@@ -2,3 +2,4 @@
 .snakemake/
 results/
 data/ref_genome/
+logs/

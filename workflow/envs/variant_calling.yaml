@@ -1,0 +1,10 @@
+name: variant_calling
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - bwa
+  - samtools
+  - bcftools
+  - wget
+  - gzip

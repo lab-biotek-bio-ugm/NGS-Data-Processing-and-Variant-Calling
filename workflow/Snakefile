@@ -14,6 +14,8 @@ rule all:
 rule download_ref_genome:
     output:
         f"data/ref_genome/{CHR}.fa.gz"
+    conda:
+        "envs/variant_calling.yaml"
     log:
         "logs/download_ref_genome.log"
     params:
@@ -26,6 +28,8 @@ rule index_genome:
         f"data/ref_genome/{CHR}.fa.gz"
     output:
         f"data/ref_genome/{CHR}bwaidx.bwt"
+    conda:
+        "envs/variant_calling.yaml"
     log:
         "logs/index_genome.log"
     params:
@@ -41,6 +45,8 @@ rule unzip_genome:
         f"data/ref_genome/{CHR}.fa.gz"
     output:
         f"data/ref_genome/{CHR}.fa"
+    conda:
+        "envs/variant_calling.yaml"
     log:
         "logs/unzip_genome.log"
     shell:
@@ -51,6 +57,8 @@ rule faidx_genome:
         f"data/ref_genome/{CHR}.fa"
     output:
         f"data/ref_genome/{CHR}.fa.fai"
+    conda:
+        "envs/variant_calling.yaml"
     log:
         "logs/faidx_genome.log"
     shell:
@@ -64,6 +72,8 @@ rule bwa_aln:
     output:
         sai1="results/sai/{sample}_1.sai",
         sai2="results/sai/{sample}_2.sai"
+    conda:
+        "envs/variant_calling.yaml"
     params:
         chromosome=f"{CHR}bwaidx"
     log:
@@ -85,6 +95,8 @@ rule bwa_sampe:
         fq2=lambda wildcards: samples.loc[wildcards.sample, "reverse"]
     output:
         "results/sam/{sample}.sam"
+    conda:
+        "envs/variant_calling.yaml"
     params:
         chromosome=f"{CHR}bwaidx"
     log:
@@ -97,6 +109,8 @@ rule sam_to_bam:
         "results/sam/{sample}.sam"
     output:
         "results/bam/{sample}.bam"
+    conda:
+        "envs/variant_calling.yaml"
     log:
         "logs/sam_to_bam_{sample}.log"
     shell:
@@ -107,6 +121,8 @@ rule sort_bam:
         "results/bam/{sample}.bam"
     output:
         "results/bam/{sample}_sorted.bam"
+    conda:
+        "envs/variant_calling.yaml"
     log:
         "logs/sort_bam_{sample}.log"
     shell:
@@ -117,6 +133,8 @@ rule index_bam:
         "results/bam/{sample}_sorted.bam"
     output:
         "results/bam/{sample}_sorted.bam.bai"
+    conda:
+        "envs/variant_calling.yaml"
     log:
         "logs/index_bam_{sample}.log"
     shell:
@@ -128,6 +146,8 @@ rule mpileup:
         ref=f"data/ref_genome/{CHR}.fa"
     output:
         "results/bcf/{sample}_raw.bcf"
+    conda:
+        "envs/variant_calling.yaml"
     log:
         "logs/mpileup_{sample}.log"
     shell:
@@ -138,6 +158,8 @@ rule call_variants:
         "results/bcf/{sample}_raw.bcf"
     output:
         "results/vcf/{sample}_variants.vcf"
+    conda:
+        "envs/variant_calling.yaml"
     log:
         "logs/call_variants_{sample}.log"
     shell:
@@ -148,6 +170,8 @@ rule filter_variants:
         "results/vcf/{sample}_variants.vcf"
     output:
         "results/vcf/{sample}_final_variants.vcf"
+    conda:
+        "envs/variant_calling.yaml"
     log:
         "logs/filter_variants_{sample}.log"
     shell:
