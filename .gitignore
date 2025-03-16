@@ -1,0 +1,4 @@
+.ipynb_checkpoints/
+.snakemake/
+results/
+data/ref_genome/
