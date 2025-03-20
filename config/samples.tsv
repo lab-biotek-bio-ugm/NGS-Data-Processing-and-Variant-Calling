@@ -1,3 +1,4 @@
 sample_id	forward	reverse
 1_HBA2	data/trimmed_fastq/1_HBA2_1.fq.gz	data/trimmed_fastq/1_HBA2_2.fq.gz
 2_HBA2	data/trimmed_fastq/2_HBA2_1.fq.gz	data/trimmed_fastq/2_HBA2_2.fq.gz
+3_HBA2	data/trimmed_fastq/3_HBA2_1.fq.gz	data/trimmed_fastq/3_HBA2_2.fq.gz
