@@ -25,7 +25,7 @@ rule download_ref_genome:
 
 rule index_genome:
     input:
-        f"data/ref_genome/{CHR}.fa.gz"
+        f"data/ref_genome/{CHR}.fa"
     output:
         f"data/ref_genome/{CHR}bwaidx.bwt"
     conda:
@@ -36,8 +36,7 @@ rule index_genome:
         chr = CHR
     shell:
         """
-        bwa index -p data/ref_genome/{params.chr}bwaidx -a bwtsw {input} &> {log}
-        mv {params.chr}* data/ref_genome &>> {log}
+        (cd data/ref_genome && bwa index -p {params.chr}bwaidx -a bwtsw {params.chr}.fa) &> {log}
         """
 
 rule unzip_genome:
@@ -67,6 +66,7 @@ rule faidx_genome:
 rule bwa_aln:
     input:
         ref=f"data/ref_genome/{CHR}.fa.fai",
+        index=f"data/ref_genome/{CHR}bwaidx.bwt",
         fq1=lambda wildcards: samples.loc[wildcards.sample, "forward"],
         fq2=lambda wildcards: samples.loc[wildcards.sample, "reverse"]
     output:
@@ -75,15 +75,15 @@ rule bwa_aln:
     conda:
         "envs/variant_calling.yaml"
     params:
-        chromosome=f"{CHR}bwaidx"
+        chromosome=f"data/ref_genome/{CHR}bwaidx"  # Updated to point to the correct index prefix
     log:
         "logs/bwa_aln_{sample}.log"
     threads: 4
     shell:
         """
         mkdir -p results/sai
-        bwa aln -t {threads} data/ref_genome/{params.chromosome} {input.fq1} > {output.sai1} 2>> {log}
-        bwa aln -t {threads} data/ref_genome/{params.chromosome} {input.fq2} > {output.sai2} 2>> {log}
+        bwa aln -t {threads} {params.chromosome} {input.fq1} > {output.sai1} 2>> {log}
+        bwa aln -t {threads} {params.chromosome} {input.fq2} > {output.sai2} 2>> {log}
         """
 
 rule bwa_sampe:
