@@ -1,4 +1,4 @@
-name: vcs
+name: variant_calling
 channels:
   - bioconda
   - conda-forge
