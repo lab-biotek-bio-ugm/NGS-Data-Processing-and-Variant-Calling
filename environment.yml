@@ -91,6 +91,7 @@ dependencies:
   - hyperframe=6.1.0=pyhd8ed1ab_0
   - icu=75.1=he02047a_0
   - idna=3.10=pyhd8ed1ab_1
+  - igv-notebook=0.6.2=pyhdfd78af_0
   - immutables=0.21=py312h66e93f0_0
   - importlib-metadata=8.6.1=pyha770c72_0
   - importlib_resources=6.5.2=pyhd8ed1ab_0
