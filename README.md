@@ -1,8 +1,6 @@
 # NGS-Data-Processing-and-Variant-Calling
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/lab-biotek-bio-ugm/NGS-Data-Processing-and-Variant-Calling/blob/main/Modules-collab.ipynb)
-
-[![Open in Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/lab-biotek-bio-ugm/NGS-Data-Processing-and-Variant-Calling/HEAD)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/lab-biotek-bio-ugm/NGS-Data-Processing-and-Variant-Calling/blob/main/Modules-collab.ipynb) [![Open in Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/lab-biotek-bio-ugm/NGS-Data-Processing-and-Variant-Calling/HEAD)
 
 **Bahasa Indonesia**
 
