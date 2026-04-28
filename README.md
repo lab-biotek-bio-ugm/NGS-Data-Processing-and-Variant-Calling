@@ -1,6 +1,6 @@
 # NGS-Data-Processing-and-Variant-Calling
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/OWNER/REPO/blob/BRANCH/Modules_collab.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/lab-biotek-bio-ugm/NGS-Data-Processing-and-Variant-Calling/blob/main/Modules_collab.ipynb)
 
 **Bahasa Indonesia**
 
